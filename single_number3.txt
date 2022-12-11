@@ -1,0 +1,8 @@
+class Solution(object):
+    def singleNumber(self, nums):
+        d = reduce(lambda x, y: x ^ y, nums, 0) 
+        d &= -d
+        res = [0, 0]
+        for num in nums:
+            res[num & d == 0] ^= num
+        return res
